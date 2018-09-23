@@ -2,6 +2,7 @@ package com.dridia.Actions;
 
 import com.dridia.Utils.Methods;
 import com.dridia.Utils.SleepCondition;
+import xobot.client.Interface;
 import xobot.script.methods.Packets;
 import xobot.script.methods.Players;
 import xobot.script.methods.Widgets;
@@ -12,7 +13,7 @@ import xobot.script.util.Time;
  */
 public class Teleport {
     public static void teleportHome() {
-        Packets.sendAction(315, 449, 3, 1195, 0, 1);
+        Packets.sendAction(315, 449, 3, 1195);
         Methods.conditionalSleep(new SleepCondition() {
             @Override
             public boolean isValid() {
@@ -27,19 +28,15 @@ public class Teleport {
         }, 5000);
     }
     public static void teleportGlacorsLair(){
-        Packets.sendAction(315, 799, 504, 7455, 0, 1);
+        Packets.sendAction(315, 0, -1, 7455);
         Methods.conditionalSleep(new SleepCondition() {
             @Override
             public boolean isValid() {
                 return Widgets.getBackDialogId() == 2492;
             }
         }, 2500);
-        if(Widgets.getBackDialogId() == 2492) {
-            Packets.sendAction(315, 840, 326, 2498, 0, 1);
-            Time.sleep(650, 900);
-        }
-        if(Widgets.getBackDialogId() == 2492) {
-            Packets.sendAction(315, 715, 321, 2495, 0, 1);
+        if(Widgets.getOpenInterface() == 25411) {
+            Packets.sendAction(315, 840, 326, 26090);
             Methods.conditionalSleep(new SleepCondition() {
                 @Override
                 public boolean isValid() {
@@ -53,5 +50,9 @@ public class Teleport {
                 }
             }, 4500);
         }
+        /*if(Widgets.getBackDialogId() == 2492) {
+            Packets.sendAction(315, 715, 321, 2495);
+
+        }*/
     }
 }

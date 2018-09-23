@@ -14,11 +14,11 @@ import xobot.script.wrappers.interactive.Item;
 public class Supplies {
 
     public static String shouldPotUp(){
-        if(Skills.getCurrentLevel(Skills.ATTACK) <= Variables.SUPER_ATTACK_USEAT) {
+        if(Skills.ATTACK.getCurrentLevel() <= Variables.SUPER_ATTACK_USEAT && Variables.SUPER_ATTACK_AMOUNT > 0) {
             return "attack";
-        }else if(Skills.getCurrentLevel(Skills.STRENGTH) <= Variables.SUPER_STRENGTH_USEAT){
+        }else if(Skills.STRENGTH.getCurrentLevel()  <= Variables.SUPER_STRENGTH_USEAT && Variables.SUPER_STRENGTH_AMOUNT > 0){
             return "strength";
-        }else if(Skills.getCurrentLevel(Skills.DEFENCE) <= Variables.SUPER_DEFENCE_USEAT){
+        }else if(Skills.DEFENCE.getCurrentLevel()  <= Variables.SUPER_DEFENCE_USEAT && Variables.SUPER_DEFENCE_AMOUNT > 0){
             return "defence";
         }
         return "null";
@@ -76,8 +76,8 @@ public class Supplies {
 
 
     public static boolean shouldEat(){
-        if(Skills.getCurrentLevel(Skills.CONSTITUTION) > 0) {
-            if (Skills.getCurrentLevel(Skills.CONSTITUTION) <= Variables.EAT_AT_HP) {
+        if(Skills.CONSTITUTION.getCurrentLevel()  > 0) {
+            if (Skills.CONSTITUTION.getCurrentLevel()  <= Variables.EAT_AT_HP) {
                 return true;
             }
         }
@@ -95,13 +95,13 @@ public class Supplies {
     public static void eatFood() {
         Item food = Inventory.getItem(Variables.FOOD_ID);
         if (food != null) {
-            final int hp = Skills.getCurrentLevel(Skills.CONSTITUTION);
+            final int hp = Skills.CONSTITUTION.getCurrentLevel() ;
             food.interact("Eat");
             //829 animation for eating food
             Methods.conditionalSleep(new SleepCondition() {
                 @Override
                 public boolean isValid() {
-                    return Skills.getCurrentLevel(Skills.CONSTITUTION) > hp;
+                    return Skills.CONSTITUTION.getCurrentLevel()  > hp;
                 }
             }, 1700);
 

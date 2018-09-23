@@ -28,8 +28,9 @@ public class Banking {
                 }
             }, 5000);
         }
-
+        System.out.println("Sleep has ended");
         if (Bank.isOpen()) {
+            System.out.println("Bank is open!");
             Bank.depositAllExcept(Variables.DO_NOT_DEPOSIT_ID);
 
             Banking.withdrawNeededSupplies();
@@ -51,6 +52,7 @@ public class Banking {
                     return Inventory.getCount(Variables.SUPER_ATTACK_ID[3]) == Variables.SUPER_ATTACK_AMOUNT;
                 }
             }, 2000);
+            System.out.println("sprAttack has ended");
         }
         if(strAmount < Variables.SUPER_STRENGTH_AMOUNT) {
             Bank.withdraw(Variables.SUPER_STRENGTH_ID[3], Variables.SUPER_STRENGTH_AMOUNT - strAmount);

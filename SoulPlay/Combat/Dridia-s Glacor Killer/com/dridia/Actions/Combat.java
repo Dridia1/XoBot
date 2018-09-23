@@ -61,7 +61,7 @@ public class Combat {
     }
 
     public static void Attack() {
-        NPC[] allGlacors = Methods.getAllSortedByDistance(1382);
+        final NPC[] allGlacors = Methods.getAllSortedByDistance(1382);
 
         if(allGlacors.length > 0){
             for (int i = 0; i < allGlacors.length; i++) {
@@ -84,7 +84,7 @@ public class Combat {
             int ABCval1 = new Random().nextInt(-3, 3);
             int ABCval2 = new Random().nextInt(-3, 3);
 
-            Tile t = new Tile(2659 + ABCval1, 3997 + ABCval2);
+            final Tile t = new Tile(2659 + ABCval1, 3997 + ABCval2);
             if(t.isReachable()) {
                 Walking.walkTo(t);
                 Methods.conditionalSleep(new SleepCondition() {
@@ -152,7 +152,7 @@ public class Combat {
         }
         if (!Inventory.isFull())
         {
-            int count = countInventory();
+            final int count = countInventory();
             Packets.sendAction(234, itemsFound.get(0).getItem().getID(), itemsFound.get(0).getX(), itemsFound.get(0).getY());
             Methods.conditionalSleep(new SleepCondition() {
                 @Override
