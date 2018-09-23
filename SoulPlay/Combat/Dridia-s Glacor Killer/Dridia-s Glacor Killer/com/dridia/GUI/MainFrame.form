@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.dridia.GUI.MainFrame">
+  <grid id="27dc6" binding="mainPane" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="618" height="506"/>
+    </constraints>
+    <properties>
+      <foreground color="-12763843"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="e9002" binding="panelSupplies" layout-manager="GridLayoutManager" row-count="5" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-14671840"/>
+        </properties>
+        <border type="line" title="Supplies">
+          <title-color color="-14671840"/>
+          <color color="-14671840"/>
+        </border>
+        <children>
+          <component id="f731e" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <foreground color="-14671840"/>
+              <text value="Super Restore"/>
+            </properties>
+          </component>
+          <component id="1b3c3" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <foreground color="-14671840"/>
+              <text value="Super Defence"/>
+            </properties>
+          </component>
+          <component id="2ff44" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <foreground color="-14671840"/>
+              <text value="Super Strength"/>
+            </properties>
+          </component>
+          <component id="927da" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <foreground color="-14671840"/>
+              <text value="Super Attack"/>
+            </properties>
+          </component>
+          <component id="12081" class="javax.swing.JSpinner" binding="withdrawSprRestSpinner">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="117" height="26"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-12961222"/>
+              <foreground color="-12961222"/>
+            </properties>
+          </component>
+          <component id="2ef2b" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <foreground color="-14671840"/>
+              <text value="Use when:"/>
+            </properties>
+          </component>
+          <component id="fd533" class="javax.swing.JSpinner" binding="useWhenSprRestSpinner">
+            <constraints>
+              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                <preferred-size width="77" height="26"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="6b46b" class="javax.swing.JSpinner" binding="withdrawSprAtkSpinner">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="117" height="26"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-12961222"/>
+              <foreground color="-12961222"/>
+            </properties>
+          </component>
+          <component id="90ef1" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <foreground color="-14671840"/>
+              <text value="Use when:"/>
+            </properties>
+          </component>
+          <component id="ee9fb" class="javax.swing.JSpinner" binding="useWhenSprAtkSpinner">
+            <constraints>
+              <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                <preferred-size width="77" height="26"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="e6acf" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <foreground color="-14671840"/>
+              <text value="Use when:"/>
+            </properties>
+          </component>
+          <component id="efc73" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <foreground color="-14671840"/>
+              <text value="Use when:"/>
+            </properties>
+          </component>
+          <component id="fe48a" class="javax.swing.JSpinner" binding="withdrawSprStrSpinner">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="117" height="26"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-12961222"/>
+              <foreground color="-12961222"/>
+            </properties>
+          </component>
+          <component id="f424a" class="javax.swing.JSpinner" binding="withdrawSprDefSpinner">
+            <constraints>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="117" height="26"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-12961222"/>
+              <foreground color="-12961222"/>
+            </properties>
+          </component>
+          <component id="86f78" class="javax.swing.JSpinner" binding="useWhenSprStrSpinner">
+            <constraints>
+              <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                <preferred-size width="77" height="26"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="f4628" class="javax.swing.JSpinner" binding="useWhenSprDefSpinner">
+            <constraints>
+              <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                <preferred-size width="77" height="26"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="4aaf2" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <foreground color="-14671840"/>
+              <text value="Food ID:"/>
+            </properties>
+          </component>
+          <component id="9c196" class="javax.swing.JTextField" binding="txtFoodID">
+            <constraints>
+              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="117" height="24"/>
+              </grid>
+            </constraints>
+            <properties>
+              <enabled value="true"/>
+              <horizontalAlignment value="4"/>
+              <text value=""/>
+              <toolTipText value="foodID"/>
+            </properties>
+          </component>
+          <component id="ffffa" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <foreground color="-14671840"/>
+              <text value="Eat at:"/>
+            </properties>
+          </component>
+          <component id="4c117" class="javax.swing.JSpinner" binding="eatAtSpinner">
+            <constraints>
+              <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false">
+                <preferred-size width="77" height="26"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+        </children>
+      </grid>
+      <grid id="60d80" binding="panelLoot" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-14671840"/>
+        </properties>
+        <border type="line" title="Loot">
+          <title-color color="-14671840"/>
+          <color color="-14671840"/>
+        </border>
+        <children>
+          <component id="dc7df" class="javax.swing.JList" binding="lootTable">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="232"/>
+              </grid>
+            </constraints>
+            <properties>
+              <selectionForeground color="-4473925"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="510d" binding="panelAddLoot" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-14671840"/>
+        </properties>
+        <border type="line" title="Add Loot">
+          <title-color color="-14671840"/>
+          <color color="-14671840"/>
+        </border>
+        <children>
+          <component id="c6670" class="javax.swing.JTextField" binding="txtAddItemID">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <editable value="true"/>
+            </properties>
+          </component>
+          <component id="80cf9" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <foreground color="-14671840"/>
+              <text value="Item ID"/>
+            </properties>
+          </component>
+          <component id="50bbf" class="javax.swing.JButton" binding="btnAddItemToLootTable">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Add Item"/>
+            </properties>
+          </component>
+          <component id="53b7b" class="javax.swing.JTextPane" binding="txtFieldAddLoot">
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+            </constraints>
+            <properties>
+              <editable value="false"/>
+              <enabled value="false"/>
+              <foreground color="-12961222"/>
+              <text value="NOTE: You do NOT have to add the following items into your drop-table: Steadfast Boots, Ragefire Boots, Glaiven Boots and Armadyl Shards."/>
+            </properties>
+          </component>
+          <component id="f7dd1" class="javax.swing.JButton" binding="btnRemoveItem">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Remove Item"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="ef279" binding="panelPrayer" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-14671840"/>
+        </properties>
+        <border type="line" title="Prayer">
+          <title-color color="-14671840"/>
+          <color color="-14671840"/>
+        </border>
+        <children>
+          <component id="d5ff5" class="javax.swing.JCheckBox" binding="checkBoxPiety">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <foreground color="-14671840"/>
+              <hideActionText value="false"/>
+              <selected value="true"/>
+              <text value="Piety (Lvl 70 Prayer)"/>
+            </properties>
+          </component>
+          <component id="d2265" class="javax.swing.JCheckBox" binding="checkBoxMagic">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <enabled value="false"/>
+              <foreground color="-14671840"/>
+              <selected value="true"/>
+              <text value="Magic (Lvl 37 Prayer)"/>
+            </properties>
+          </component>
+          <component id="839d3" class="javax.swing.JTextPane" binding="txtFieldPrayer">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+            </constraints>
+            <properties>
+              <editable value="false"/>
+              <enabled value="false"/>
+              <foreground color="-12961222"/>
+              <text value="NOTE: Protect from magic is essential in order to kill these. That's why you can't toggle it."/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <component id="74dcc" class="javax.swing.JButton" binding="btnStartHunt">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-14671840"/>
+          <text value="Start botting!"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
