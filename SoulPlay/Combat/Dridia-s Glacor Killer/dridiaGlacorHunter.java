@@ -1,35 +1,41 @@
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseWheelEvent;
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Properties;
 
 import com.dridia.Actions.Combat;
 import com.dridia.Actions.Teleport;
 import com.dridia.GUI.controller.MainFrameController;
 import xobot.client.callback.listeners.MessageListener;
 import xobot.client.callback.listeners.PaintListener;
+import xobot.client.events.MessageEvent;
 import xobot.client.input.Mouse;
 import xobot.script.ActiveScript;
 import xobot.script.Manifest;
-
-import xobot.script.methods.*;
+import xobot.script.methods.Packets;
+import xobot.script.methods.Players;
+import xobot.script.methods.Settings;
+import xobot.script.methods.tabs.Skills;
 import xobot.script.util.Time;
 import xobot.script.util.Timer;
-import xobot.script.wrappers.interactive.Character;
-import xobot.script.wrappers.interactive.Player;
 
 import com.dridia.Data.Variables;
 import com.dridia.Actions.Supplies;
+import xobot.script.wrappers.interactive.Character;
+import xobot.script.wrappers.interactive.Player;
 
 import javax.imageio.ImageIO;
 
 /**
- * Created by Dridia on 2018-01-16.
+ * Created by Dridia on 2018-01-16..
  */
 
-@Manifest(authors = { "Dridia" }, name = "Dridia's Glacor Killer", version = 1.0, description = "Kill Glacors at Glacors Lair")
-public class dridiaGlacorHunter extends ActiveScript implements PaintListener, MessageListener, Mouse{
+@Manifest(authors = { "Dridia" }, name = "Dridia's Glacor Killer - localversion", version = 1.1, description = "Kill Glacors at Glacors Lair")
+public class dridiaGlacorHunter extends ActiveScript implements PaintListener, MessageListener, MouseListener{
 
     public Timer startTime;
 
@@ -47,6 +53,48 @@ public class dridiaGlacorHunter extends ActiveScript implements PaintListener, M
     public boolean onStart() {
 
         MainFrameController frame =  new MainFrameController(600, 500, true);
+
+        /**/
+        Properties prop = new Properties();
+        InputStream input = null;
+
+        try {
+
+            input = new FileInputStream("config.properties");
+
+            // load a properties file
+            prop.load(input);
+
+            // get the property value and print it out
+            frame.withdrawSprAtkSpinner.setValue(Integer.parseInt(prop.getProperty("atk_amount")));
+            frame.useWhenSprAtkSpinner.setValue(Integer.parseInt(prop.getProperty("atk_usewhen")));
+
+            frame.withdrawSprStrSpinner.setValue(Integer.parseInt(prop.getProperty("str_amount")));
+            frame.useWhenSprStrSpinner.setValue(Integer.parseInt(prop.getProperty("str_usewhen")));
+
+            frame.withdrawSprDefSpinner.setValue(Integer.parseInt(prop.getProperty("def_amount")));
+            frame.useWhenSprDefSpinner.setValue(Integer.parseInt(prop.getProperty("def_usewhen")));
+
+            frame.withdrawSprRestSpinner.setValue(Integer.parseInt(prop.getProperty("spr_amount")));
+            frame.useWhenSprRestSpinner.setValue(Integer.parseInt(prop.getProperty("spr_usewhen")));
+
+            frame.txtFoodID.setText(prop.getProperty("food_id"));
+            frame.eatAtSpinner.setValue(Integer.parseInt(prop.getProperty("eat_at")));
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (input != null) {
+                try {
+                    input.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        /**/
+
         frame.show();
 
         if(Settings.get(172) != 1){
@@ -63,7 +111,7 @@ public class dridiaGlacorHunter extends ActiveScript implements PaintListener, M
         Variables.USE_PIETY = frame.checkBoxPiety.isSelected();
         System.out.println("Piety: " + Variables.USE_PIETY);
 
-        //Get the amount of potions to withdraw
+        //Get the amount of potions to withdraw.
         int sprRestore = (Integer)frame.withdrawSprRestSpinner.getValue();
         int sprAttack = (Integer)frame.withdrawSprAtkSpinner.getValue();
         int sprStrength = (Integer)frame.withdrawSprStrSpinner.getValue();
@@ -73,21 +121,12 @@ public class dridiaGlacorHunter extends ActiveScript implements PaintListener, M
         Variables.SUPER_ATTACK_AMOUNT = sprAttack;  //2 is Recommended
         Variables.SUPER_STRENGTH_AMOUNT = sprStrength;//2 is Recommended
         Variables.SUPER_DEFENCE_AMOUNT = sprDefence; //2 is Recommended
-        System.out.println("Super Restore Amount: " + Variables.SUPER_RESTORE_AMOUNT);
-        System.out.println("Super Attack Amount: " + Variables.SUPER_ATTACK_AMOUNT);
-        System.out.println("Super Strenght Amount: " + Variables.SUPER_STRENGTH_AMOUNT);
-        System.out.println("Super Defence Amout: " + Variables.SUPER_DEFENCE_AMOUNT);
-
 
         //At what lvl to repot:
         Variables.SUPER_RESTORE_USEAT = (Integer)frame.useWhenSprRestSpinner.getValue();
         Variables.SUPER_ATTACK_USEAT = (Integer)frame.useWhenSprAtkSpinner.getValue();
         Variables.SUPER_STRENGTH_USEAT = (Integer)frame.useWhenSprStrSpinner.getValue();
         Variables.SUPER_DEFENCE_USEAT = (Integer)frame.useWhenSprDefSpinner.getValue();
-        System.out.println("Restore UseAt: " + Variables.SUPER_RESTORE_USEAT);
-        System.out.println("Attack UseAt: " + Variables.SUPER_ATTACK_USEAT);
-        System.out.println("Strength UseAt: " + Variables.SUPER_STRENGTH_USEAT);
-        System.out.println("Defence UseAt: " + Variables.SUPER_DEFENCE_USEAT);
 
         //MantaRay = 391
         //Get the foodID and at what hp to eat.
@@ -113,6 +152,50 @@ public class dridiaGlacorHunter extends ActiveScript implements PaintListener, M
         Variables.DROP_LIST.add(21776); // Shards of armadyl
 
         startTime = new Timer(System.currentTimeMillis());
+
+        /**/
+        Properties propSave = new Properties();
+        OutputStream output = null;
+
+        try {
+
+            output = new FileOutputStream("config.properties");
+
+            // set the properties value
+            prop.setProperty("atk_amount", String.valueOf(sprAttack));
+            prop.setProperty("atk_usewhen", String.valueOf(Variables.SUPER_ATTACK_USEAT));
+
+            prop.setProperty("str_amount", String.valueOf(sprStrength));
+            prop.setProperty("str_usewhen", String.valueOf(Variables.SUPER_STRENGTH_USEAT));
+
+            prop.setProperty("def_amount", String.valueOf(sprDefence));
+            prop.setProperty("def_usewhen", String.valueOf(Variables.SUPER_DEFENCE_USEAT));
+
+            prop.setProperty("spr_amount", String.valueOf(sprRestore));
+            prop.setProperty("spr_usewhen", String.valueOf(Variables.SUPER_RESTORE_USEAT));
+
+            prop.setProperty("food_id", String.valueOf(Variables.FOOD_ID));
+            prop.setProperty("eat_at", String.valueOf(Variables.EAT_AT_HP));
+
+            prop.setProperty("piety_on", String.valueOf(Variables.USE_PIETY));
+
+
+            // save properties to project root folder
+            prop.store(output, null);
+
+        } catch (IOException io) {
+            io.printStackTrace();
+        } finally {
+            if (output != null) {
+                try {
+                    output.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+        /**/
 
         return true;
     }
@@ -200,7 +283,6 @@ public class dridiaGlacorHunter extends ActiveScript implements PaintListener, M
         }
     }
 
-    @Override
     public void MessageRecieved(String arg0, int arg1, String arg2) {
         // TODO Auto-generated method stub
 
@@ -217,45 +299,73 @@ public class dridiaGlacorHunter extends ActiveScript implements PaintListener, M
     }
 
     @Override
-    public void _mouseExited(MouseEvent mouseEvent) {
+    public void MessageRecieved(MessageEvent messageEvent) {
 
     }
 
+    /**
+     * Invoked when the mouse button has been clicked (pressed
+     * and released) on a component.
+     *
+     * @param e
+     */
     @Override
-    public void _mousePressed(MouseEvent mouseEvent) {
+    public void mouseClicked(MouseEvent e) {
+
+        if((e.getX() > paintToggleX && e.getX() < (paintToggleX + paintToggleWidth)) && (e.getY() > paintToggleY) && e.getY() < (paintToggleY + paintToggleHeight)){
+            paintToggle = !paintToggle;
+            System.out.println("tgl: " + paintToggle);
+        }
+    }
+
+    /**
+     * Invoked when a mouse button has been pressed on a component.
+     *
+     * @param e
+     */
+    @Override
+    public void mousePressed(MouseEvent e) {
 
     }
 
+    /**
+     * Invoked when a mouse button has been released on a component.
+     *
+     * @param e
+     */
     @Override
-    public void _mouseMoved(MouseEvent mouseEvent) {
+    public void mouseReleased(MouseEvent e) {
 
     }
 
+    /**
+     * Invoked when the mouse enters a component.
+     *
+     * @param e
+     */
     @Override
-    public void _mouseEntered(MouseEvent mouseEvent) {
+    public void mouseEntered(MouseEvent e) {
 
     }
 
+    /**
+     * Invoked when the mouse exits a component.
+     *
+     * @param e
+     */
     @Override
-    public void _mouseClicked(MouseEvent mouseEvent) {
-        if((mouseEvent.getX() > paintToggleX && mouseEvent.getX() < (paintToggleX + paintToggleWidth)) && (mouseEvent.getY() > paintToggleY) && mouseEvent.getY() < (paintToggleY + paintToggleHeight)){
+    public void mouseExited(MouseEvent e) {
+
+    }
+
+    /* in mouse clicked
+    *         if((mouseEvent.getX() > paintToggleX && mouseEvent.getX() < (paintToggleX + paintToggleWidth)) && (mouseEvent.getY() > paintToggleY) && mouseEvent.getY() < (paintToggleY + paintToggleHeight)){
             if(paintToggle) {
                 paintToggle = false;
             }else{
                 paintToggle = true;
             }
         }
-
-    }
-
-    @Override
-    public void _mouseDragged(MouseEvent mouseEvent) {
-
-    }
-
-    @Override
-    public void _mouseReleased(MouseEvent mouseEvent) {
-
-    }
+    * */
 }
 
