@@ -25,7 +25,7 @@ public class dridiaAutoHunter extends ActiveScript implements PaintListener, Mes
 
     public static int ImpJar = 11260;
     public static Tile startTile = new Tile(2556, 2845);
-    public static Imp selectedImp;
+    public static Imp selectedImp = Imp.BABY;
 
     public static Tile nextSpotTile;
 
